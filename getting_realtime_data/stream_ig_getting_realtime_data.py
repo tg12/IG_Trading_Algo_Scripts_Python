@@ -6,9 +6,6 @@ IG Markets Stream API sample with Python
 2015 FemtoTrader
 """
 
-import time
-import sys
-import traceback
 import logging
 
 from trading_ig import (IGService, IGStreamService)

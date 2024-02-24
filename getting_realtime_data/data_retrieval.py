@@ -1,10 +1,7 @@
-import time
-import sys
-import traceback
 import logging
 import math
 
-from trading_ig import (IGService, IGStreamService)
+from trading_ig import (IGStreamService)
 from trading_ig.config import config
 from trading_ig.lightstreamer import Subscription
 from predefined_functions.initialisation import Initialisation
@@ -166,7 +163,7 @@ class Data_Retrieval:
         # print("price: %s " % item_update)
         name = item_update["name"].split(":")[1]
 
-        if not name in self.data_map:
+        if name not in self.data_map:
             self.data_map[name] = []
         for items in item_update["values"]:
             try:
@@ -188,7 +185,7 @@ class Data_Retrieval:
 
     def on_account_update(self, balance_update):
         name = "account"
-        if not name in self.data_map:
+        if name not in self.data_map:
             self.data_map[name] = []
             self.data_map[name].append(balance_update)
 
@@ -200,7 +197,7 @@ class Data_Retrieval:
 
     def on_trade_update(self, trade_update):
         name = "trade"
-        if not name in self.data_map:
+        if name not in self.data_map:
             self.data_map[name] = []
             self.data_map[name].append(trade_update)
 
